@@ -152,8 +152,11 @@ async function processLayout(
     `, { ${namedExports.map((n) => `${n} as _${n}`).join(', ')} }`
   } from '${normalizeToUnixPath(layoutPath)}'
 
-export default layout(${stringifyObject(mergedFrontMatter)})
+export default Layout
 ${namedExports.map((name) => `export const ${name} = _${name}`).join('\n')}
+
+
+export const frontMatter = ${stringifyObject(mergedFrontMatter)}
 
 ${content}
 `
