@@ -31,7 +31,10 @@ module.exports = async function mdxEnhancedLoader(src) {
   const resourcePath = normalizeToUnixPath(this.resourcePath)
     .replace(
       normalizeToUnixPath(
-        path.join(normalizeToUnixPath(this.rootContext), options.mdxEnhancedPluginOptions.pagesDir)
+        path.join(
+          normalizeToUnixPath(this.rootContext),
+          options.mdxEnhancedPluginOptions.pagesDir
+        )
       ),
       ''
     )
@@ -147,7 +150,7 @@ async function processLayout(
 
   // Import the layout, export the layout-wrapped content, pass front matter into layout
   // If there are re-exported data fetching methods, import/export those as well
-  return `import layout${
+  return `import Layout${
     namedExports &&
     `, { ${namedExports.map((n) => `${n} as _${n}`).join(', ')} }`
   } from '${normalizeToUnixPath(layoutPath)}'
